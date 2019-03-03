@@ -1,19 +1,22 @@
 class Pipe{
  int locY;
  int size;
- int x, y;
+ public int x;
  
  Pipe(){
    this.x = width;
-   this.y = 0;
-   this.size = 30; //30px? - needs tweaking
+   this.size = 200; //needs tweaking
+   this.locY = int(random(200, height-200));
  }
  
  void move(){
-   this.x += 3;
+   this.x -= 3;
  }
  
  void drawPipes(){
-   rect(this.x, this.y, this.x + 30, this.y + random(100, height-100));
+   fill(255, 0, 0);
+   stroke(0);
+   rect(this.x, 0, this.size/2, this.locY-(size/2));
+   rect(this.x, this.locY + (size/2), this.size/2, height);
  }
 }
