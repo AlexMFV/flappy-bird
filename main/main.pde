@@ -1,5 +1,6 @@
 ArrayList<Pipe> pipes;
 Bird bird = new Bird();
+Score score = new Score();
 
 void setup() {
   size(800, 600);
@@ -19,8 +20,11 @@ void draw() {
   for (Pipe p : pipes) {
     if(!bird.isDead)
       p.move();
+      
+    if(!bird.isDead && p.x == 200)
+      score.addScore();
     
-    if(index == 0)
+    if(index <= 1)
       checkCollisions(p);
 
     if (p.x < 0 - p.size) {
@@ -34,16 +38,26 @@ void draw() {
     }
     index++;
   }
-
+  
+  score.drawScore();
   bird.drawBird();
 }
 
 void checkCollisions(Pipe p){
+  println(bird.posX, bird.posY, p.x, p.locY);
   //Check top pipe needs fixing
-  if(bird.posX >= p.x && bird.posX <= p.x + (p.size/2.2) && bird.posY >= 0 && bird.posY <= p.locY)
+  if(!bird.isDead && bird.posX + 40 >= p.x && bird.posX + 40 <= p.x + (p.size/2.2) && bird.posY + 40 >= 0 && bird.posY + 40 <= p.locY-(p.size/2))
     bird.isDead = true;
+  else
+    if(!bird.isDead && bird.posX >= p.x && bird.posX <= p.x + (p.size/2.2) && bird.posY >= 0 && bird.posY <= p.locY-(p.size/2))
+      bird.isDead = true;
   
   //Check bottom pipe
+  if(!bird.isDead && bird.posX + 40 >= p.x && bird.posX + 40 <= p.x + (p.size/2.2) && bird.posY + 40 <= height && bird.posY + 40 >= p.locY + (p.size/2))
+    bird.isDead = true;
+  else
+    if(!bird.isDead && bird.posX >= p.x && bird.posX <= p.x + (p.size/2.2) && bird.posY <= height && bird.posY >= p.locY + (p.size/2))
+      bird.isDead = true;
 }
 
 void mousePressed() {

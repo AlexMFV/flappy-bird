@@ -37,8 +37,10 @@ class Bird {
       isJumping = false;
     }
     
-    if(this.posY + 40 > height)
+    if(this.posY + 40 > height){
       this.posY = height-40; //Die
+      this.isDead = true;
+    }
   }
 
   void jump() {
