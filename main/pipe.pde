@@ -5,8 +5,8 @@ class Pipe{
  
  Pipe(){
    this.x = width;
-   this.size = 200; //needs tweaking
-   this.locY = int(random(200, height-200));
+   this.size = 150; //needs tweaking
+   this.locY = int(random(150, height-150));
  }
  
  void move(){
@@ -14,9 +14,9 @@ class Pipe{
  }
  
  void drawPipes(){
-   fill(255, 0, 0);
+   fill(0, 180, 0);
    stroke(0);
-   rect(this.x, 0, this.size/2, this.locY-(size/2));
-   rect(this.x, this.locY + (size/2), this.size/2, height);
+   rect(this.x, 0, this.size/2.2, this.locY-(size/2));
+   rect(this.x, this.locY + (size/2), this.size/2.2, height);
  }
 }

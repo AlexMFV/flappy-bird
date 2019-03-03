@@ -1,4 +1,5 @@
 ArrayList<Pipe> pipes;
+Bird bird = new Bird();
 
 void setup(){
   size(800, 600);
@@ -7,7 +8,9 @@ void setup(){
 }
 
 void draw(){
-  background(255);
+  background(123, 206, 247);
+  
+  bird.drawBird();
    
   int index = 0;
   for(Pipe p : pipes){
@@ -29,4 +32,10 @@ void draw(){
     index++;
   }
   
+  bird.move();  
+}
+
+void mousePressed(){
+  bird.jump();
+  println("Mouse Pressed!");
 }
