@@ -58,6 +58,10 @@ void checkCollisions(Pipe p){
   else
     if(!bird.isDead && bird.posX >= p.x && bird.posX <= p.x + (p.size/2.2) && bird.posY <= height && bird.posY >= p.locY + (p.size/2))
       bird.isDead = true;
+      
+  //if(bird.isDead)
+    //if(bird.posY == height-40)
+      //Draw Buttons on screen and restart game on button click
 }
 
 void mousePressed() {
